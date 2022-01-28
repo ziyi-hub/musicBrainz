@@ -11,6 +11,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 import Homepage from './components/home.vue'
 import Artistes from './components/artistes.vue'
+import InfoArtiste from './components/infoartiste.vue'
 import Titres from './components/titres.vue'
 import NotFound from './components/notfound.vue'
 
@@ -22,6 +23,7 @@ const router = new VueRouter({
   routes : [
     {path: "/", component: Homepage},
     {path: "/artistes/:nom_artiste", component: Artistes},
+    {path: "/artiste/:id_artiste", component: InfoArtiste},
     {path: "/titres/:nom_titre", component: Titres},
     {path: "*", component: NotFound} //A mettre a la fin de tous les routeurs
   ]

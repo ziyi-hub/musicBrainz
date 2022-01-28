@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Liste des artistes : "{{input}}"</h1>
+    <h1>Artist</h1>
     <section v-if="errored">
         <p> Désolée, nous n'avons pas accéder aux données du serveur pour le moment, réessayer plus tard </p>
       </section>
@@ -16,12 +16,24 @@
                   <tr>
                     <th>ID</th>
                     <th>NAME</th>
+                    <th>TYPE</th>
+                    <th>DATE OF BIRTH</th>
+                    <th>GENDER</th>
+                    <th>COUNTRY</th>
+                    <th>DISAMBIGUATION</th>
+                    <th>SCORE</th>
                   </tr>
               </thead>
               <tbody>
-                <tr v-for="data in datas">
-                    <td><router-link v-bind:to="'/artiste/' + data.id">{{data.id}}</router-link></td>
-                    <td>{{data.name}}</td>
+                <tr v-if="datas">
+                    <td>{{datas.id}}</td>
+                    <td>{{datas.name}}</td>
+                    <td>{{datas.type}}</td>
+                    <td>{{datas['life-span'].begin}}</td>
+                    <td>{{datas.gender}}</td>
+                    <td>{{datas.country}}</td>
+                    <td>{{datas.disambiguation}}</td>
+                    <td>{{datas.score}}</td>
                 </tr>
               </tbody>
             </table>
@@ -43,23 +55,30 @@ export default {
       return {
         errored : false,
         loading : true,
-        datas : null,
-        input : null
+        datas : null
       }
     },
 
     watch: {
-      $route: "fetchData"
+      $route: 'infoData'
     },
 
     methods: {
-      fetchData: function () {
-          axios.
-            get("https://musicbrainz.org/ws/2/artist/?query=artist:" + this.$route.params.nom_artiste + "&fmt=json")
+      
+    },
+
+    computed : {
+
+    },
+    
+    created() {
+        axios.
+            get("https://musicbrainz.org/ws/2/artist/?query=arid:" + this.$route.params.id_artiste + "&fmt=json")
               .then(response => {
-                this.datas = response.data.artists;
-                this.input = this.$route.params.nom_artiste;
-                console.log(this.input)
+                console.log(response);
+
+                this.datas = response.data.artists[0];
+                console.log(this.datas);
      
               })
               .catch(error => {
@@ -67,19 +86,10 @@ export default {
               })
               .finally(() => this.loading = false );
       }
-    },
-
-    computed : {
-
-    },
 
 }
 </script>
 
 <style>
-    a:hover{
-        background-color: rgba(0,0,0, 0.5);
-        color: red;
-        text-decoration: none;
-    }
+
 </style>
