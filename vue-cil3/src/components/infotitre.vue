@@ -11,10 +11,10 @@
           <spinner></spinner>
         </div>
         <div v-else>
-          <div>
-            <table class="table table-striped text-right">
+          <div v-if="datas.length">
+            <table class="table table-bordered table-striped text-right">
               <thead>
-                  <tr>
+                  <tr class="table-dark">
                     <th>ID</th>
                     <th>TITLE</th>
                     <th>ARTIST</th>
@@ -28,7 +28,7 @@
                   <tr v-if="datas">
                     <td>{{datas.id}}</td>
                     <td>{{datas.title}}</td>
-                    <td><router-link v-bind:to="'/artistes/' + datas.artist">{{datas.artist}}</router-link></td>
+                    <td><router-link v-bind:to="'/artiste/' + datas.artist">{{datas.artist}}</router-link></td>
                     <td>{{datas.barcode}}</td>
                     <td>{{datas.count}}</td>
                     <td>{{datas.disambiguation}}</td>
@@ -36,6 +36,9 @@
                   </tr>
               </tbody>
             </table>
+          </div>
+          <div v-else>
+            <h1 style="color: green">Désolée, nous n'avons pas trouver des données correspondantes</h1>
           </div>
         </div>
       </section>
@@ -88,5 +91,12 @@ export default {
 </script>
 
 <style>
-
+    table{
+        margin: 50px 0;
+        font-size: 1.2em;
+    }
+    
+    div h1{
+        margin: 50px 0;
+    }
 </style>

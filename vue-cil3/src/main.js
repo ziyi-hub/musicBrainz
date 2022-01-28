@@ -24,7 +24,7 @@ const router = new VueRouter({
   routes : [
     {path: "/", component: Homepage},
     {path: "/artistes/:nom_artiste", component: Artistes},
-    {path: "/artiste/:id_artiste", component: InfoArtiste},
+    {path: "/artiste/:nom_artiste", component: InfoArtiste},
     {path: "/titres/:nom_titre", component: Titres},
     {path: "/titre/:id_titre", component: InfoTitre},
     {path: "*", component: NotFound} //A mettre a la fin de tous les routeurs

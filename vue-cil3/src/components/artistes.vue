@@ -1,33 +1,36 @@
 <template>
   <div>
-    <h1>Liste des artistes : "{{this.$route.params.nom_artiste}}"</h1>
     <section v-if="errored">
         <p> Désolée, nous n'avons pas accéder aux données du serveur pour le moment, réessayer plus tard </p>
-      </section>
+    </section>
 
-      <section v-else>
+    <section v-else>
         <div v-if="loading">
           <spinner></spinner>
         </div>
         <div v-else>
-          <div>
-            <table class="table table-striped text-right">
+          <div v-if="datas.length">
+            <h1>Liste des artistes : "{{this.$route.params.nom_artiste}}"</h1>
+            <table class="table table-bordered table-striped text-right">
               <thead>
-                  <tr>
+                  <tr class="table-dark">
                     <th>ID</th>
                     <th>NAME</th>
                   </tr>
               </thead>
               <tbody>
                 <tr v-for="data in datas">
-                    <td><router-link v-bind:to="'/artiste/' + data.id">{{data.id}}</router-link></td>
-                    <td>{{data.name}}</td>
+                    <td>{{data.id}}</td>
+                    <td><router-link v-bind:to="'/artiste/' + data.name">{{data.name}}</router-link></td>
                 </tr>
               </tbody>
             </table>
           </div>
+          <div v-else>
+            <h1 style="color: green">Désolée, nous n'avons pas trouver des données correspondantes</h1>
+          </div>
         </div>
-      </section>
+    </section>
   </div>
 </template>
 
@@ -54,7 +57,7 @@ export default {
     methods: {
         fetchData() {
               axios.
-                get("https://musicbrainz.org/ws/2/artist/?query=artist:" + this.$route.params.nom_artiste + "&fmt=json")
+                get("https://musicbrainz.org/ws/2/artist/?query=artist:" + this.$route.params.nom_artiste.trim() + "&fmt=json")
                   .then(response => {
                     this.datas = response.data.artists;
                   })
@@ -74,9 +77,12 @@ export default {
 </script>
 
 <style>
-    a:hover{
-        background-color: rgba(0,0,0, 0.5);
-        color: red;
-        text-decoration: none;
+    table{
+        margin: 50px 0;
+        font-size: 1.2em;
+    }
+    
+    div h1{
+        margin: 50px 0;
     }
 </style>

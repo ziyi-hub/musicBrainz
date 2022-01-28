@@ -11,7 +11,7 @@
 
     <router-view></router-view>
 
-    <div id="footer"><i>Footer</i></div>
+    <div id="footer"><i>@musicBrainz-2021/2022</i></div>
 
   </div>
 </template>
@@ -47,12 +47,20 @@
     {
       list-style-type: none;
       padding: 0;
+      font-size: 1.8em;
     }
 
     li 
     {
       display: inline-block;
       margin: 0 10px;
+    }
+    
+    input{
+        width: 30em;
+        padding: 10px 20px;
+        margin: 20px 0;
+        font-size: 1.2em;
     }
 
     a 
@@ -61,7 +69,18 @@
     }
     
     #footer{
-        position: sticky;
+        position: fixed;
         bottom: 0;
+        background-color: black;
+        color: white;
+        width: 100%;
+        padding: 20px 0;
+        font-size: 20px;
+    }
+    
+    a:hover{
+        color: red;
+        font-weight: bold;
+        text-decoration: none;
     }
 </style>

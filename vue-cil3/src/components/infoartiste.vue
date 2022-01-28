@@ -1,7 +1,6 @@
 <template>
   <div>
-    <h1 v-if="datas">Information de "{{datas.name}}"</h1>
-    <section v-if="errored">
+      <section v-if="errored">
         <p> Désolée, nous n'avons pas accéder aux données du serveur pour le moment, réessayer plus tard </p>
       </section>
 
@@ -10,10 +9,11 @@
           <spinner></spinner>
         </div>
         <div v-else>
-          <div>
-            <table class="table table-striped text-right">
+          <div v-if="datas.length">
+            <h1 v-if="datas">Information de "{{datas.name}}"</h1>
+            <table class="table table-bordered table-striped text-right">
               <thead>
-                  <tr>
+                  <tr class="table-dark">
                     <th>ID</th>
                     <th>NAME</th>
                     <th>TYPE</th>
@@ -37,6 +37,9 @@
                 </tr>
               </tbody>
             </table>
+          </div>
+          <div v-else>
+            <h1 style="color: green">Désolée, nous n'avons pas trouver des données correspondantes</h1>
           </div>
         </div>
       </section>
@@ -73,7 +76,7 @@ export default {
     
     created() {
         axios.
-            get("https://musicbrainz.org/ws/2/artist/?query=arid:" + this.$route.params.id_artiste + "&fmt=json")
+            get("https://musicbrainz.org/ws/2/artist/?query=artist:" + this.$route.params.nom_artiste + "&fmt=json")
               .then(response => {
                 console.log(response);
 
@@ -91,5 +94,12 @@ export default {
 </script>
 
 <style>
-
+    table{
+        margin: 50px 0;
+        font-size: 1.2em;
+    }
+    
+    div h1{
+        margin: 50px 0;
+    }
 </style>

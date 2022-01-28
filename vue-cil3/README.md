@@ -1,6 +1,8 @@
-# vue-cil3
+# Projet "musicBrainz"
 
-> A Vue.js project
+## Équipes
+- Tania OLIVIA
+- Ziyi WANG
 
 ## Build Setup
 
@@ -17,12 +19,12 @@ npm run build
 # api de titres
 https://musicbrainz.org/ws/2/cdstub/?query=title:Doo&fmt=json
 
-#api d'artiste
-https://musicbrainz.org/ws/2/artist/?query=artist:fred%20AND%20type:group%20AND%20country:US&fmt=json
+#api d'artistes
+https://musicbrainz.org/ws/2/artist/?query=artist:fred&fmt=json
 
-空格考虑
-404 有问题
-watch fetchData()
+# api d'info titre
+https://musicbrainz.org/ws/2/cdstub/?query=discid:zsXyqGWvw0zF024A_saTokxIMzo-&fmt=json
+
+#api d'info artiste
+https://musicbrainz.org/ws/2/artist/?query=artist:fred&fmt=json
 ```
-
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).

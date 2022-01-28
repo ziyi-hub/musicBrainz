@@ -10,10 +10,10 @@
           <spinner></spinner>
         </div>
         <div v-else>
-          <div>
-            <table class="table table-striped text-right">
+          <div v-if="datas.length">
+            <table class="table table-bordered table-striped text-right">
               <thead>
-                  <tr>
+                  <tr class="table-dark">
                     <th>ID</th>
                     <th>TITLE</th>
                     <th>ARTIST</th>
@@ -23,10 +23,13 @@
                   <tr v-for="data in datas">
                     <td><router-link v-bind:to="'/titre/' + data.id">{{data.id}}</router-link></td>
                     <td>{{data.title}}</td>
-                    <td><router-link v-bind:to="'/artistes/' + data.artist">{{data.artist}}</router-link></td>
+                    <td><router-link v-bind:to="'/artiste/' + data.artist">{{data.artist}}</router-link></td>
                   </tr>
               </tbody>
             </table>
+          </div>
+          <div v-else>
+            <h1 style="color: green">Désolée, nous n'avons pas trouver des données correspondantes</h1>
           </div>
         </div>
       </section>
@@ -56,7 +59,7 @@ import Spinner from "./spinner.vue";
     methods: {
       fetchData: function () {
           axios.
-            get("https://musicbrainz.org/ws/2/cdstub/?query=title:" + this.$route.params.nom_titre + "&fmt=json")
+            get("https://musicbrainz.org/ws/2/cdstub/?query=title:" + this.$route.params.nom_titre.trim() + "&fmt=json")
               .then(response => {
                 this.datas = response.data.cdstubs;
               })
@@ -75,5 +78,12 @@ import Spinner from "./spinner.vue";
 </script>
 
 <style>
-
+    table{
+        margin: 50px 0;
+        font-size: 1.2em;
+    }
+    
+    div h1{
+        margin: 50px 0;
+    }
 </style>
