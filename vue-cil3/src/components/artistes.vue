@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Liste des artistes : "{{input}}"</h1>
+    <h1>Liste des artistes : "{{this.$route.params.nom_artiste}}"</h1>
     <section v-if="errored">
         <p> Désolée, nous n'avons pas accéder aux données du serveur pour le moment, réessayer plus tard </p>
       </section>
@@ -43,8 +43,7 @@ export default {
       return {
         errored : false,
         loading : true,
-        datas : null,
-        input : null
+        datas : null
       }
     },
 
@@ -53,24 +52,22 @@ export default {
     },
 
     methods: {
-      fetchData: function () {
-          axios.
-            get("https://musicbrainz.org/ws/2/artist/?query=artist:" + this.$route.params.nom_artiste + "&fmt=json")
-              .then(response => {
-                this.datas = response.data.artists;
-                this.input = this.$route.params.nom_artiste;
-                console.log(this.input)
-     
-              })
-              .catch(error => {
-                this.errored = true;
-              })
-              .finally(() => this.loading = false );
-      }
+        fetchData() {
+              axios.
+                get("https://musicbrainz.org/ws/2/artist/?query=artist:" + this.$route.params.nom_artiste + "&fmt=json")
+                  .then(response => {
+                    this.datas = response.data.artists;
+                  })
+                  .catch(error => {
+                    this.errored = true;
+                  })
+                  .finally(() => this.loading = false );
+        }
     },
 
     computed : {
 
+        
     },
 
 }

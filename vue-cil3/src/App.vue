@@ -11,7 +11,7 @@
 
     <router-view></router-view>
 
-    <div id="footer"><i>Footer de l'app</i></div>
+    <div id="footer"><i>Footer</i></div>
 
   </div>
 </template>
@@ -58,5 +58,10 @@
     a 
     {
       color: #42b983;
+    }
+    
+    #footer{
+        position: sticky;
+        bottom: 0;
     }
 </style>

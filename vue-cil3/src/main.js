@@ -13,6 +13,7 @@ import Homepage from './components/home.vue'
 import Artistes from './components/artistes.vue'
 import InfoArtiste from './components/infoartiste.vue'
 import Titres from './components/titres.vue'
+import InfoTitre from './components/infotitre.vue'
 import NotFound from './components/notfound.vue'
 
 Vue.use(VueAxios, axios)
@@ -25,6 +26,7 @@ const router = new VueRouter({
     {path: "/artistes/:nom_artiste", component: Artistes},
     {path: "/artiste/:id_artiste", component: InfoArtiste},
     {path: "/titres/:nom_titre", component: Titres},
+    {path: "/titre/:id_titre", component: InfoTitre},
     {path: "*", component: NotFound} //A mettre a la fin de tous les routeurs
   ]
 })

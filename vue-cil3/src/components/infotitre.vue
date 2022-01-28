@@ -1,8 +1,9 @@
 <template>
   <div>
-    <h1 v-if="datas">Information de "{{datas.name}}"</h1>
-    <section v-if="errored">
-        <p> Désolée, nous n'avons pas accéder aux données du serveur pour le moment, réessayer plus tard </p>
+      <h1 v-if="datas">Information de "{{datas.title}}"</h1>
+      
+      <section v-if="errored">
+        <p> Désolée, Nous n'avons pas accéder aux données du serveur pour le moment, réessayer plus tard </p>
       </section>
 
       <section v-else>
@@ -15,26 +16,24 @@
               <thead>
                   <tr>
                     <th>ID</th>
-                    <th>NAME</th>
-                    <th>TYPE</th>
-                    <th>DATE OF BIRTH</th>
-                    <th>GENDER</th>
-                    <th>COUNTRY</th>
+                    <th>TITLE</th>
+                    <th>ARTIST</th>
+                    <th>BARCODE</th>
+                    <th>TRACK LIST COUNT</th>
                     <th>DISAMBIGUATION</th>
                     <th>SCORE</th>
                   </tr>
               </thead>
               <tbody>
-                <tr v-if="datas">
+                  <tr v-if="datas">
                     <td>{{datas.id}}</td>
-                    <td>{{datas.name}}</td>
-                    <td>{{datas.type}}</td>
-                    <td>{{datas['life-span'].begin}}</td>
-                    <td>{{datas.gender}}</td>
-                    <td>{{datas.country}}</td>
+                    <td>{{datas.title}}</td>
+                    <td><router-link v-bind:to="'/artistes/' + datas.artist">{{datas.artist}}</router-link></td>
+                    <td>{{datas.barcode}}</td>
+                    <td>{{datas.count}}</td>
                     <td>{{datas.disambiguation}}</td>
                     <td>{{datas.score}}</td>
-                </tr>
+                  </tr>
               </tbody>
             </table>
           </div>
@@ -73,11 +72,9 @@ export default {
     
     created() {
         axios.
-            get("https://musicbrainz.org/ws/2/artist/?query=arid:" + this.$route.params.id_artiste + "&fmt=json")
+            get("https://musicbrainz.org/ws/2/cdstub/?query=discid:" + this.$route.params.id_titre + "&fmt=json")
               .then(response => {
-                console.log(response);
-
-                this.datas = response.data.artists[0];
+                this.datas = response.data.cdstubs[0];
                 console.log(this.datas);
      
               })
