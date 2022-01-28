@@ -10,7 +10,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 import Homepage from './components/home.vue'
-import Tasks from './components/artistes.vue'
+import Artistes from './components/artistes.vue'
 import Titres from './components/titres.vue'
 import NotFound from './components/notfound.vue'
 
@@ -21,7 +21,7 @@ const router = new VueRouter({
   mode : "history",
   routes : [
     {path: "/", component: Homepage},
-    {path: "/artistes", component: Tasks},
+    {path: "/artistes/:nom_artiste", component: Artistes},
     {path: "/titres/:nom_titre", component: Titres},
     {path: "*", component: NotFound} //A mettre a la fin de tous les routeurs
   ]
