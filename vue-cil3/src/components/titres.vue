@@ -57,9 +57,15 @@ import Spinner from "./spinner.vue";
     },
 
     methods: {
+      /**
+       * Recherche un titre sur Musicbrainz à l'aide du nom d'un titre
+       * @constant : nom_titre (string) nom d'un titre
+       * @return : datas (object) liste des titres
+       */
       fetchData: function () {
           axios.
-            get("https://musicbrainz.org/ws/2/cdstub/?query=title:" + this.$route.params.nom_titre.trim() + "&fmt=json")
+            get("https://musicbrainz.org/ws/2/cdstub/?query=title:" + this.$route.params.nom_titre.trim() + "&fmt=json",
+            { headers: { 'user-agent': 'TDMusicBrainzOliviaWang/1.0 (taniaolivia9@gmail.com, ziyiwang1027@gmail.com)' } })
               .then(response => {
                 this.datas = response.data.cdstubs;
               })
@@ -82,7 +88,7 @@ import Spinner from "./spinner.vue";
         margin: 50px 0;
         font-size: 1.2em;
     }
-    
+
     div h1{
         margin: 50px 0;
     }
