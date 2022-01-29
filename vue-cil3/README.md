@@ -10,7 +10,7 @@
 # install dependencies
 npm install
 
-# serve with hot reload at localhost:8080
+# lancer le programme et tapez localhost:8080 sur un navigateur
 npm run dev
 
 # build for production with minification
@@ -27,4 +27,8 @@ https://musicbrainz.org/ws/2/cdstub/?query=discid:zsXyqGWvw0zF024A_saTokxIMzo-&f
 
 #api d'info artiste
 https://musicbrainz.org/ws/2/artist/?query=artist:fred&fmt=json
+
 ```
+# User-Agent String
+Pour User-Agent, il n'est pas compatible avec Chrome. Ça donne l'erreur "Refused to set unsafe header user-agent". Par contre, il est compatible avec Safari.
+
