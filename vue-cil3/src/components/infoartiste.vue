@@ -50,7 +50,11 @@
 </template>
 
 <script>
-
+/**
+  * Infos d'une artiste
+  * @author : Tania OLIVIA, Ziyi WANG
+  */
+    
 import axios from 'axios';
 import Spinner from "./spinner.vue";
 

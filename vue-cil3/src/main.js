@@ -1,3 +1,8 @@
+/**
+  * Main.js
+  * @author : Tania OLIVIA, Ziyi WANG
+  */
+
 import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'

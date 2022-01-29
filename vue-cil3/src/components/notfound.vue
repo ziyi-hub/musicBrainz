@@ -5,6 +5,10 @@
 </template>
 
 <script>
+/**
+  * Affiche l'erreur 404 Not Found
+  * @author : Tania OLIVIA, Ziyi WANG
+  */
   export default{
 
   }

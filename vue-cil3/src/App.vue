@@ -17,6 +17,10 @@
 </template>
 
 <script>
+/**
+  * App.vue
+  * @author : Tania OLIVIA, Ziyi WANG
+  */
     export default {
       name: 'app',
       data () {

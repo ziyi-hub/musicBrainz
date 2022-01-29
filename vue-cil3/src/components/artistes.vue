@@ -35,6 +35,10 @@
 </template>
 
 <script>
+/**
+  * Liste des artistes
+  * @author : Tania OLIVIA, Ziyi WANG
+  */
 import axios from 'axios';
 import Spinner from "./spinner.vue";
 

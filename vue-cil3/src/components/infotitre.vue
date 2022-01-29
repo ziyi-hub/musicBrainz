@@ -45,7 +45,11 @@
 </template>
 
 <script>
-
+/**
+  * Infos du titre
+  * @author : Tania OLIVIA, Ziyi WANG
+  */
+    
 import axios from 'axios';
 import Spinner from "./spinner.vue";
 
@@ -69,9 +73,9 @@ export default {
   },
 
 /**
- * Recherche un titre du CD sur Musicbrainz à l'aide d'id
- * @constant : id_titre (string) id de titre du CD
- * @return : datas (object) infos structurées d'un titre du CD
+ * Recherche un titre sur Musicbrainz à l'aide d'id
+ * @constant : id_titre (string) id de titre
+ * @return : datas (object) infos structurées d'un titre
  */
   created() {
     axios.

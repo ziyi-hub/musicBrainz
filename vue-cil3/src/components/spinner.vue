@@ -5,6 +5,11 @@
 </template>
 
 <script>
+/**
+  * Affiche le spinner
+  * @author : Tania OLIVIA, Ziyi WANG
+  */
+    
   export default{
     data () {
       return {

@@ -8,6 +8,10 @@
 </template>
 
 <script>
+/**
+  * Accueil
+  * @author : Tania OLIVIA, Ziyi WANG
+  */
   export default{
 
   }
